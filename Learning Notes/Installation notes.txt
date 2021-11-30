@@ -1,8 +1,11 @@
+Section 1 & 2.
+INSTALLATION AND WORKING NOTES
+
 -command will install dbt within the terminal.
 -pip3 install dbt
 
 - initialise dbt folder through:
- dbt init learn-dbt
+ dbt init cjtests-learn-dbt
 
 - creates the shell. you can cd into the learn-dbt folder and list (ls) the folder items
 
@@ -16,3 +19,8 @@ dbt debug --config-dir
 -- this profile connects to snowflake account
 
 -- dbt debug will test your connection to your database through snowflake
+-- you need to cd into the learn-dbt file to run the debug
+dbt debug
+
+--dbt run will run your sql code that sits in the models
+dbt run

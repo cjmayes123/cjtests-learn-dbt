@@ -1,0 +1,19 @@
+Section 3.
+CREATING NEW MODELS (E.G snowflake_customer_purchases)
+
+-- create new sql script within the models folder
+-- put whether it should be a view or a table
+-- add the model to the schema
+dbt run
+
+GRANT
+
+grant create schema on database analytics to role transform_role ;
+grant usage on all schemas in database analytics to role transform_role ;
+grant usage on future schemas in database analytics to role transform_role ;
+grant select on all tables in database analytics to role transform_role ;
+grant select on future tables in database analytics to role transform_role ;
+grant select on all views in database analytics to role transform_role ;
+grant select on future views in database analytics to role transform_role ;
+
+Within warehouse on snowflake, you must make sure it grants the ability to create tables!

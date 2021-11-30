@@ -9,7 +9,6 @@ models:
         description: "The primary key for this table"
         tests:
           - unique
-          - not_null
 
   - name: my_second_dbt_model
     description: "A starter dbt model"
@@ -18,4 +17,25 @@ models:
         description: "The primary key for this table"
         tests:
           - unique
-          - not_null
+
+  - name: snowflake_customer_purchases
+    description: "A query using snowflake tables"
+    columns:
+      - name: c_custkey
+        description: "customer_id"
+        tests:
+          - unique
+
+  - name: cumulative_orders_by_date
+    description: "cumulative orders query"
+    columns:
+      - name: o_orderdate
+        description: "order date"
+
+  - name: dates
+
+  - name: incremental_time
+
+
+
+

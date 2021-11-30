@@ -1,0 +1,66 @@
+Section 3.
+
+TYPES OF MATERIALISATION
+-- Tables , fast to query, sometimes slow to build, new records not automatically added
+-- Views, Model is rebuilt as a view on each run. Doesnt store data. May be slow to query
+-- Incremental, Only updated or new records added to table. Quick to build. Advanced configuration
+-- Ephemeral, Temporary tables are created but not added into DB, reusable logic for models, Tough to debug
+
+INCREMENTAL
+For incremental we can add in the following parameter example
+{% if is_incremental() %}
+    and d_date > (select max(d_date) from {{this}})
+    {% endif %}
+
+
+EPHEMERAL
+{{ config(materialized='ephemeral') }}
+/*
+    This will not be created as it is a ephemeral model
+*/
+
+WE CAN SET ALIAS AND SCHEMA, YOU CANT CREATE A DATABASE FROM DBT.
+You have to create the database manually and add the grants to the database
+{{ config(materialized='table', alias = 'first_model', schema = 'cj_test') }}
+{{ config(materialized='table', alias = 'first_model', schema = 'cj_test', database = 'example' }}
+
+
+
+You can set variables in the dbt project and refer to them in the sql
+    vars:
+      my_third_variable: 1
+
+select *
+from source_data
+where id >= '{{ var("my_third_variable", "1") }}'
+
+
+TESTS
+dbt test
+you can configure tests in the dbt project file, for example not_null
+
+some example tests include
+
+        tests:
+          - unique
+          - not_null
+          - accepted values:
+              values: [1,2]
+              quote: false
+
+relationship tests:
+
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('my_first_dbt_model')
+              field: id
+
+ORDER OF OPERATIONS
+dbt run
+dbt test
+
+CUSTOM TESTS
+Tests in the test folder are written tests / custom tests on the table
+whereas tests in the schema are tests on the schema itself
