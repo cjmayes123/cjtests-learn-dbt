@@ -1,0 +1,14 @@
+Section 4 notes on Command Line and Cloud DBT
+
+This will run the specific folder of example
+dbt run --models example
+
+This will run the specific sql file
+dbt run --models dates
+
+This will specify multiple models to run
+dbt run --models example.dates example.my_first_dbt_model
+
+CLOUD
+https://cloud.getdbt.com/
+account is the url / region and number
