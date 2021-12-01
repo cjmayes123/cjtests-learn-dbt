@@ -29,5 +29,7 @@ This will set up the environment to run from the cloud as oppose to the command 
 
 JOBS
 You can then set up a job with the required CLI requests as well as set triggers.
+The job will be added to the queue and then execute. It will flag any errors.
+Any changes you make you will need to repush back to the repo before re running in the cloud console.
 
 
