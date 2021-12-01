@@ -40,6 +40,12 @@ sources:
     schema: tpch_sf1
     tables:
       - name: orders
+
       - name: customer
+        columns:
+          - name: c_custkey
+            tests:
+              - unique
+              - not_null
 
 

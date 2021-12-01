@@ -49,3 +49,19 @@ GROUP BY
 c.c_custkey,
 c.c_name,
 c.c_nationkey
+
+You can also run tests on source data - good way of showing expectations of data
+
+sources:
+  - name: sample
+    database: snowflake_sample_data
+    schema: tpch_sf1
+    tables:
+      - name: orders
+
+      - name: customer
+        columns:
+          - name: c_custkey
+            tests:
+              - unique
+              - not_null
