@@ -11,4 +11,23 @@ dbt run --models example.dates example.my_first_dbt_model
 
 CLOUD
 https://cloud.getdbt.com/
-account is the url / region and number
+
+Notes:
+When setting up: account is the url / region and number
+Once you've linked the project you have to add connections to snowflake as well as your git repo.
+This will include using an SSH key.
+The final project will have the repository and connection set up as if the dbt has a sub repository.
+deployment credentials here refer to the cloud login.
+
+To add the key you go to github, settings, deploy key.
+
+CREATING AN ENVIRONMENT
+Set up an environment, with the snowflake connection that has been set up.
+deployment credentials here are different - it is the transform_user and pass found in the profiles.yml
+
+This will set up the environment to run from the cloud as oppose to the command line.
+
+JOBS
+You can then set up a job with the required CLI requests as well as set triggers.
+
+

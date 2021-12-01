@@ -5,4 +5,4 @@ The notes within this section are rough notes for personal learning whilst looki
 It is based on the UDEMY course "Complete guide to Learning DBT including connecting to a Data Warehouse"
 The Instructors name is Jeremy Holtzman
 
-The notes are grouped by each section of the videos.
+The notes are written sequentially as the videos go along and are for personal use.

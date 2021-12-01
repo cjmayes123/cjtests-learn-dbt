@@ -6,14 +6,14 @@ TYPES OF MATERIALISATION
 -- Incremental, Only updated or new records added to table. Quick to build. Advanced configuration
 -- Ephemeral, Temporary tables are created but not added into DB, reusable logic for models, Tough to debug
 
-INCREMENTAL
+INCREMENTAL EXAMPLE
 For incremental we can add in the following parameter example
 {% if is_incremental() %}
     and d_date > (select max(d_date) from {{this}})
     {% endif %}
 
 
-EPHEMERAL
+EPHEMERAL EXAMPLE
 {{ config(materialized='ephemeral') }}
 /*
     This will not be created as it is a ephemeral model
@@ -23,7 +23,6 @@ WE CAN SET ALIAS AND SCHEMA, YOU CANT CREATE A DATABASE FROM DBT.
 You have to create the database manually and add the grants to the database
 {{ config(materialized='table', alias = 'first_model', schema = 'cj_test') }}
 {{ config(materialized='table', alias = 'first_model', schema = 'cj_test', database = 'example' }}
-
 
 
 You can set variables in the dbt project and refer to them in the sql
@@ -64,3 +63,6 @@ dbt test
 CUSTOM TESTS
 Tests in the test folder are written tests / custom tests on the table
 whereas tests in the schema are tests on the schema itself
+
+Within the test folder there is an example test of testing whether the number of nulls from a table
+is greater than a certain %.

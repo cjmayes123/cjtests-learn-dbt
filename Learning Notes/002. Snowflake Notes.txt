@@ -1,12 +1,16 @@
 Section 3.
 CREATING NEW MODELS (E.G snowflake_customer_purchases)
 
+General:
 -- create new sql script within the models folder
 -- put whether it should be a view or a table
 -- add the model to the schema
 dbt run
 
 GRANT
+Within Snowflake, make sure to check users accessibility through roles and grants.
+Initially I had not had this set up correctly as I could only create views but not tables.
+You will also want to check what the default database is.
 
 grant create schema on database analytics to role transform_role ;
 grant usage on all schemas in database analytics to role transform_role ;
