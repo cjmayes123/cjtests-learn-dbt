@@ -23,3 +23,29 @@ on run-start:
 
 SNAPSHOT
 You can add snapshots into your dbt to create a log of current states for different tables/ID's
+
+SOURCES EXAMPLE
+You can refer to sources within the schema and sql file.
+
+sources:
+  - name: sample
+    database: snowflake_sample_data
+    schema: tpch_sf1
+    tables:
+      - name: orders
+      - name: customer
+
+SELECT
+c.c_custkey,
+c.c_name,
+c.c_nationkey AS nation,
+SUM(o.o_totalprice) AS total_order_price
+FROM
+{{ source('sample' , 'customer') }} c
+LEFT JOIN
+{{ source('sample' , 'orders')}} o
+ON c.c_custkey = o.o_custkey
+GROUP BY
+c.c_custkey,
+c.c_name,
+c.c_nationkey
