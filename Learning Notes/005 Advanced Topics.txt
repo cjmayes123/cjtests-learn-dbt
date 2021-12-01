@@ -1,0 +1,8 @@
+HOOKS
+run specific commands before or after models
+
+Within your dbt_project file you can add the following syntax, which would allow usage for the role.
+
+on run-end:
+  - 'grant usage on schema analytics.dbt to role analyst'
+
