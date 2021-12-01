@@ -6,3 +6,20 @@ Within your dbt_project file you can add the following syntax, which would allow
 on run-end:
   - 'grant usage on schema analytics.dbt to role analyst'
 
+You can add post hooks into the models.
+models:
+  cjtests_learn_dbt:
+    # Config indicated by + and applies to all files under models/example/
+    example:
+      materialized: table
+    vars:
+      my_variable: 1
+    post-hook: 'grant usage on schema {{target.this}} to role analyst'
+    post-hook: 'grant select on {{this}} to role analyst'
+
+You can also have triggers at the start.
+on run-start:
+    - "query to be executed"
+
+SNAPSHOT
+You can add snapshots into your dbt to create a log of current states for different tables/ID's
